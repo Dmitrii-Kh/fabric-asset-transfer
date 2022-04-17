@@ -10,7 +10,7 @@ const register = async (req, resp) => {
         })
     } else {
         try {
-            const registerResult = await registerAndEnrollUser(caClient, await wallet, process.env.MSP_ORG, req.body.username, process.env.AFFILICATION);
+            const registerResult = await registerAndEnrollUser(caClient, await wallet, process.env.MSP_ORG, req.body.username, process.env.AFFILIATION);
             resp.send({
                 status: 200,
                 message: registerResult

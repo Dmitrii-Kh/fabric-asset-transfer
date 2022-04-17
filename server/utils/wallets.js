@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Gateway, Wallets } = require('fabric-network');
 const FabricCAServices = require('fabric-ca-client');
 const { buildCAClient, enrollAdmin, registerAndEnrollUser } = require('./CAUtil.js');
@@ -20,7 +21,7 @@ class ValidateData {
         this.wallet = await buildWallet(Wallets, databaseURL)
         try {
             await enrollAdmin(this.caClient, this.wallet, process.env.MSP_ORG);
-            await registerAndEnrollUser(this.caClient, this.wallet, process.env.MSP_ORG, process.env.GARBAGE, process.env.AFFILICATION);
+            await registerAndEnrollUser(this.caClient, this.wallet, process.env.MSP_ORG, process.env.GARBAGE, process.env.AFFILIATION);
         } catch {
             return
         }
@@ -44,6 +45,7 @@ class ValidateData {
 }
 
 const validateData = new ValidateData();
+
 module.exports = {
     wallet: validateData.getWallet(),
     gateway: validateData.getGateway(),
