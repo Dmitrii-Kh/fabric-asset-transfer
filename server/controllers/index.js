@@ -1,5 +1,7 @@
-const userServices = require('./user');
+const userControllers = require('./user');
+const assetControllers = require('./asset');
 
 module.exports = {
-    ...userServices
+    ...userControllers,
+    ...assetControllers
 };
