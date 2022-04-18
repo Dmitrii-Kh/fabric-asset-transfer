@@ -1,6 +1,6 @@
-const wallets = require('./wallets');
+const walletData = require('./walletData');
 const bufferEncode = require('./bufferEncode');
 module.exports = {
-    ...wallets,
+    ...walletData,
     ...bufferEncode,
 }

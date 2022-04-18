@@ -9,7 +9,7 @@ const databaseURL = "http://" + process.env.COUCHDB_USER
                     + "@" + process.env.COUCHDB_HOST 
                     + ":" + process.env.COUCHDB_PORT
 
-class ValidateData {
+class WalletData {
     constructor(){
         this.ccp = buildCCPOrg1();
         this.caClient = buildCAClient(FabricCAServices, this.ccp, process.env.CA_HOST_NAME);
@@ -44,11 +44,11 @@ class ValidateData {
     }
 }
 
-const validateData = new ValidateData();
+const walletData = new WalletData();
 
 module.exports = {
-    wallet: validateData.getWallet(),
-    gateway: validateData.getGateway(),
-    ccp: validateData.getCcp(),
-    caClient: validateData.getCaClient(),
+    wallet: walletData.getWallet(),
+    gateway: walletData.getGateway(),
+    ccp: walletData.getCcp(),
+    caClient: walletData.getCaClient(),
 };
