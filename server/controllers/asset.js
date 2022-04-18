@@ -44,7 +44,7 @@ const create = async (req, res) => {
 
 const get = async (req, res) => {
     try {
-        if (!req.query['username']) {
+        if (!req.query.username) {
             throw {
                 status: 404,
                 message: 'Request must contain username field!'
