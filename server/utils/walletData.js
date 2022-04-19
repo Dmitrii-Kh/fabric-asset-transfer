@@ -21,7 +21,6 @@ class WalletData {
         this.wallet = await buildWallet(Wallets, databaseURL)
         try {
             await enrollAdmin(this.caClient, this.wallet, process.env.MSP_ORG);
-            await registerAndEnrollUser(this.caClient, this.wallet, process.env.MSP_ORG, process.env.GARBAGE, process.env.AFFILIATION);
         } catch {
             return
         }
