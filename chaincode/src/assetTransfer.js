@@ -63,6 +63,21 @@ class AssetTransfer extends Contract {
         }
         return JSON.stringify(allResults);
     }
+
+    async TransferAsset(ctx, id, newOwner) {
+        const assetString = await this.ReadAsset(ctx, id);
+        const asset = JSON.parse(assetString);
+        asset.Owner = newOwner;
+        return ctx.stub.putState(id, Buffer.from(JSON.stringify(asset)));
+    }
+
+    async DeleteAsset(ctx, id) {
+        const exists = await this.AssetExists(ctx, id);
+        if(!exists) {
+            throw new Error(`The asset ${id} does not exist`)
+        }
+        return ctx.stub.deleteState(id);
+    }
 }
 
 module.exports = AssetTransfer;
